@@ -1,0 +1,582 @@
+/* ==========================================================================
+   TWISTEDNOX CREATIVE - DIGITAL BUSINESS CARD & VCARD HUB (style.css)
+   Author: Raymond McCoy
+   Brand Hex Codes & Cyberpunk Neon Glow System:
+   - Core / Dark:
+     #030405 (Near Black), #07080A (Deep Black), #0D0F11 (Charcoal),
+     #121417 (Gunmetal), #181B1E (Dark Gray), #26292D (Graphite),
+     #303135 (Light Gunmetal)
+   - Metallic / Silver:
+     #797C81 (Dark Silver), #A7AAAD (Silver), #CED0D3 (Light Silver),
+     #F4F6F8 (Bright Metallic White)
+   - Cyan Accent:
+     #146974 (Deep Cyan), #66A9B4 (Steel Cyan), #8BF0F9 (Electric Cyan)
+   - Magenta Accent:
+     #712560 (Deep Magenta), #AC599C (Magenta), #F395DD (Bright Pink/Magenta)
+   ========================================================================== */
+
+:root {
+  --near-black: #030405;
+  --deep-black: #07080A;
+  --charcoal: #0D0F11;
+  --gunmetal: #121417;
+  --dark-gray: #181B1E;
+  --graphite: #26292D;
+  --light-gunmetal: #303135;
+
+  --dark-silver: #797C81;
+  --silver: #A7AAAD;
+  --light-silver: #CED0D3;
+  --metallic-white: #F4F6F8;
+
+  --deep-cyan: #146974;
+  --steel-cyan: #66A9B4;
+  --electric-cyan: #8BF0F9;
+
+  --deep-magenta: #712560;
+  --magenta: #AC599C;
+  --bright-magenta: #F395DD;
+
+  /* Neon Glow Radii & Shadows */
+  --glow-cyan-sm: 0 0 10px rgba(139, 240, 249, 0.7);
+  --glow-cyan-md: 0 0 16px rgba(139, 240, 249, 0.75), 0 0 32px rgba(139, 240, 249, 0.4), inset 0 0 10px rgba(139, 240, 249, 0.2);
+  --glow-cyan-lg: 0 0 22px rgba(139, 240, 249, 0.85), 0 0 45px rgba(139, 240, 249, 0.5), inset 0 0 14px rgba(139, 240, 249, 0.3);
+
+  --glow-magenta-sm: 0 0 10px rgba(243, 149, 221, 0.7);
+  --glow-magenta-md: 0 0 16px rgba(243, 149, 221, 0.75), 0 0 32px rgba(243, 149, 221, 0.4), inset 0 0 10px rgba(243, 149, 221, 0.2);
+  --glow-magenta-lg: 0 0 22px rgba(243, 149, 221, 0.85), 0 0 45px rgba(243, 149, 221, 0.5), inset 0 0 14px rgba(243, 149, 221, 0.3);
+
+  --glow-dual-md: 0 0 16px rgba(139, 240, 249, 0.75), 0 0 32px rgba(243, 149, 221, 0.5), inset 0 0 12px rgba(139, 240, 249, 0.25);
+  --glow-dual-lg: 0 0 24px rgba(139, 240, 249, 0.85), 0 0 48px rgba(243, 149, 221, 0.6), inset 0 0 15px rgba(139, 240, 249, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--near-black);
+  color: var(--metallic-white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(139, 240, 249, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 82% 82%, rgba(243, 149, 221, 0.14) 0%, transparent 45%);
+}
+
+.business-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  background: linear-gradient(165deg, var(--gunmetal) 0%, var(--charcoal) 55%, var(--deep-black) 100%);
+  border: 2px solid var(--graphite);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow:
+    0 24px 50px rgba(3, 4, 5, 0.9),
+    0 0 0 1px rgba(139, 240, 249, 0.2),
+    0 0 32px rgba(139, 240, 249, 0.08);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.business-card:hover {
+  border-color: rgba(139, 240, 249, 0.45);
+  box-shadow:
+    0 28px 60px rgba(3, 4, 5, 0.95),
+    0 0 0 1px rgba(139, 240, 249, 0.4),
+    0 0 40px rgba(139, 240, 249, 0.2),
+    0 0 65px rgba(243, 149, 221, 0.15);
+}
+
+.card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--electric-cyan), var(--magenta), var(--bright-magenta));
+  box-shadow: 0 0 12px rgba(139, 240, 249, 0.7);
+}
+
+/* Toast Banner */
+.vcard-toast {
+  display: none;
+  background: rgba(20, 105, 116, 0.35);
+  border: 1px solid var(--electric-cyan);
+  color: var(--metallic-white);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(139, 240, 249, 0.3);
+}
+
+.vcard-toast.active {
+  display: block;
+}
+
+/* Header: Emblem Icon & Brand Identity */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.logo-container {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  background-color: var(--dark-gray);
+  border: 1.5px solid var(--deep-cyan);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(139, 240, 249, 0.25);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-container:hover {
+  border-color: var(--electric-cyan);
+  box-shadow: var(--glow-cyan-md);
+  transform: scale(1.08) rotate(1deg);
+}
+
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  transition: filter 0.25s ease;
+}
+
+.logo-container:hover .brand-logo {
+  filter: drop-shadow(0 0 8px rgba(139, 240, 249, 0.8));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.business-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--metallic-white);
+  transition: text-shadow 0.25s ease;
+}
+
+.business-name:hover {
+  text-shadow: 0 0 10px rgba(139, 240, 249, 0.6);
+}
+
+.business-name span {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 10px rgba(139, 240, 249, 0.45);
+}
+
+.tagline {
+  font-size: 0.84rem;
+  font-style: italic;
+  color: var(--bright-magenta);
+  margin-top: 3px;
+  text-shadow: 0 0 8px rgba(243, 149, 221, 0.35);
+  transition: text-shadow 0.25s ease;
+}
+
+.tagline:hover {
+  text-shadow: 0 0 12px rgba(243, 149, 221, 0.8);
+}
+
+/* Profile Section: Circular Emblem + Name & Role */
+.profile-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: rgba(24, 27, 30, 0.72);
+  border: 1px solid var(--light-gunmetal);
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.profile-box:hover {
+  background-color: rgba(30, 34, 38, 0.85);
+  border-color: var(--steel-cyan);
+  box-shadow: var(--glow-dual-md);
+  transform: translateY(-2px);
+}
+
+.avatar-ring {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--electric-cyan), var(--bright-magenta));
+  box-shadow: 0 0 18px rgba(139, 240, 249, 0.35), 0 0 25px rgba(243, 149, 221, 0.25);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.avatar-ring:hover {
+  box-shadow: var(--glow-dual-lg);
+  transform: scale(1.06);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--deep-black);
+  background-color: var(--dark-gray);
+  transition: filter 0.3s ease;
+}
+
+.avatar-ring:hover .profile-photo {
+  filter: drop-shadow(0 0 10px rgba(139, 240, 249, 0.7));
+}
+
+.person-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.person-name {
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: var(--metallic-white);
+  transition: text-shadow 0.25s ease;
+}
+
+.profile-box:hover .person-name {
+  text-shadow: 0 0 8px rgba(139, 240, 249, 0.5);
+}
+
+.person-role {
+  font-size: 0.84rem;
+  color: var(--light-silver);
+  margin: 2px 0 8px 0;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-pill {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--electric-cyan);
+  background-color: var(--deep-black);
+  border: 1px solid var(--deep-cyan);
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.skill-pill:hover {
+  border-color: var(--electric-cyan);
+  color: var(--metallic-white);
+  background-color: var(--dark-gray);
+  box-shadow: var(--glow-cyan-sm);
+  transform: translateY(-2px);
+}
+
+/* Primary Action: Save Contact (vCard) Button */
+.vcard-primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, var(--deep-cyan) 0%, var(--deep-magenta) 100%);
+  border: 1.5px solid var(--electric-cyan);
+  border-radius: 12px;
+  color: var(--metallic-white);
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(139, 240, 249, 0.25);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vcard-primary-btn:hover {
+  background: linear-gradient(90deg, #187d8a 0%, #852d72 100%);
+  border-color: var(--bright-magenta);
+  box-shadow: var(--glow-dual-lg);
+  text-shadow: 0 0 10px rgba(244, 246, 248, 0.9);
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Clickable Contact Links (tel:, mailto:, website) */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background-color: var(--dark-gray);
+  border: 1px solid var(--light-gunmetal);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--metallic-white);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-item:hover {
+  border-color: var(--electric-cyan);
+  background-color: var(--graphite);
+  box-shadow: var(--glow-cyan-md);
+  transform: translateX(4px) translateY(-1px);
+}
+
+.contact-item:hover::before {
+  background: var(--electric-cyan);
+  box-shadow: 0 0 8px var(--electric-cyan);
+}
+
+.contact-item.magenta-hover:hover {
+  border-color: var(--bright-magenta);
+  box-shadow: var(--glow-magenta-md);
+}
+
+.contact-item.magenta-hover:hover::before {
+  background: var(--bright-magenta);
+  box-shadow: 0 0 8px var(--bright-magenta);
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: var(--gunmetal);
+  border: 1px solid var(--graphite);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--electric-cyan);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.contact-item:hover .item-icon {
+  border-color: var(--electric-cyan);
+  box-shadow: 0 0 12px rgba(139, 240, 249, 0.8), inset 0 0 8px rgba(139, 240, 249, 0.4);
+  color: var(--metallic-white);
+}
+
+.magenta-hover .item-icon {
+  color: var(--bright-magenta);
+}
+
+.magenta-hover:hover .item-icon {
+  border-color: var(--bright-magenta);
+  box-shadow: 0 0 12px rgba(243, 149, 221, 0.85), inset 0 0 8px rgba(243, 149, 221, 0.4);
+  color: var(--metallic-white);
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--silver);
+  transition: color 0.25s ease;
+}
+
+.contact-item:hover .item-label {
+  color: var(--light-silver);
+}
+
+.item-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--metallic-white);
+  margin-top: 1px;
+  transition: text-shadow 0.25s ease;
+}
+
+.contact-item:hover .item-value {
+  text-shadow: 0 0 8px rgba(139, 240, 249, 0.5);
+}
+
+.magenta-hover:hover .item-value {
+  text-shadow: 0 0 8px rgba(243, 149, 221, 0.5);
+}
+
+.item-action {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--steel-cyan);
+  transition: all 0.25s ease;
+}
+
+.contact-item:hover .item-action {
+  color: var(--electric-cyan);
+  text-shadow: 0 0 8px rgba(139, 240, 249, 0.8);
+  transform: translateX(3px);
+}
+
+.magenta-hover .item-action {
+  color: var(--magenta);
+}
+
+.magenta-hover:hover .item-action {
+  color: var(--bright-magenta);
+  text-shadow: 0 0 8px rgba(243, 149, 221, 0.8);
+  transform: translateX(3px);
+}
+
+/* QR Code Section & Frame */
+.qr-section {
+  background-color: rgba(13, 15, 17, 0.85);
+  border: 1px solid var(--graphite);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.qr-section:hover {
+  border-color: var(--steel-cyan);
+  box-shadow: var(--glow-dual-md);
+  transform: translateY(-2px);
+}
+
+.qr-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--electric-cyan);
+  margin-bottom: 4px;
+  transition: text-shadow 0.25s ease;
+}
+
+.qr-section:hover .qr-title {
+  text-shadow: 0 0 10px rgba(139, 240, 249, 0.7);
+}
+
+.qr-subtitle {
+  font-size: 0.75rem;
+  color: var(--light-silver);
+  margin-bottom: 12px;
+}
+
+.qr-frame {
+  display: inline-flex;
+  padding: 10px;
+  background: var(--deep-black);
+  border: 2px solid var(--magenta);
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(172, 89, 156, 0.25);
+  margin-bottom: 10px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.qr-frame:hover {
+  border-color: var(--bright-magenta);
+  box-shadow: var(--glow-magenta-md);
+  transform: scale(1.04);
+}
+
+.qr-image {
+  width: 148px;
+  height: 148px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.subdomain-badge {
+  display: inline-block;
+  font-size: 0.74rem;
+  color: var(--metallic-white);
+  background-color: var(--dark-gray);
+  border: 1px solid var(--deep-cyan);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 4px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.subdomain-badge:hover {
+  border-color: var(--electric-cyan);
+  background-color: var(--graphite);
+  color: var(--electric-cyan);
+  box-shadow: var(--glow-cyan-sm);
+  text-shadow: 0 0 8px rgba(139, 240, 249, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Footer */
+.card-footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--graphite);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--dark-silver);
+  transition: color 0.25s ease;
+}
+
+.card-footer:hover {
+  color: var(--light-silver);
+}
